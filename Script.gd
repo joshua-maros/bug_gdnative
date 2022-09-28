@@ -6,4 +6,6 @@ var dummy: Dummy
 
 func _init():
 	dummy = Dummy.new()
+	# Does not crash with:
+	# dummy.make()
 	dummy = dummy.make()

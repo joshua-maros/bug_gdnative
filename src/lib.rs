@@ -2,17 +2,19 @@ use gdnative::prelude::*;
 
 #[derive(NativeClass)]
 #[inherit(Reference)]
-struct Dummy(Vector2Array);
+struct Dummy;
 
 #[methods]
 impl Dummy {
     fn new(_base: &Reference) -> Self {
-        Self(Vector2Array::from_iter(std::iter::empty()))
+        Self
     }
 
     #[method]
     fn make(&self) -> Instance<Self, Unique> {
-        Instance::emplace(Self(Vector2Array::from_iter(std::iter::empty())))
+        // Same effect with:
+        // Instance::emplace(Self)
+        Instance::new()
     }
 }
 
